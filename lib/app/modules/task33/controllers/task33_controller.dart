@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_pic_pac/app/routes/app_pages.dart';
 enum XOState {
   e,
   x,
@@ -10,7 +11,6 @@ enum XOState {
 class Task33Controller extends GetxController {
   //TODO: Implement Task33Controller
 var currentPlayer = "X".obs;
-//  var playerSide = XOState.x.obs;
  var gameIsEnd = false.obs;
   var isTurn = true.obs;
   final count = 0.obs;
@@ -33,14 +33,14 @@ var currentPlayer = "X".obs;
 
   void makeMove(int i) {
     if (isTurn.value && changeXO[i] == '') {
-      changeXO[i] = "O";
-      isTurn.value = !isTurn.value;
-      currentPlayer.value="X";}
-      
-      else if (!isTurn.value && changeXO[i] == '') {
       changeXO[i] = "X";
       isTurn.value = !isTurn.value;
-      currentPlayer.value="O";
+      currentPlayer.value="O";}
+      
+      else if (!isTurn.value && changeXO[i] == '') {
+      changeXO[i] = "O";
+      isTurn.value = !isTurn.value;
+      currentPlayer.value="X";
     }
     count.value++;
       checkWinner();
@@ -102,7 +102,7 @@ var currentPlayer = "X".obs;
         children: [
           TextButton(
               onPressed: () {
-                Get.back(closeOverlays: true);
+                Get.back();
               },
               child: const Text('Играть ещё раз!'))
         ],
